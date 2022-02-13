@@ -1,7 +1,7 @@
 import unittest
 import os
 
-from dbintpy.interface import DatabaseInterface
+from dbinterpy.interface import DatabaseInterface
 
 
 class TestInterface(unittest.TestCase):
