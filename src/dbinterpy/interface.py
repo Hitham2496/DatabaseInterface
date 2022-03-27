@@ -99,8 +99,9 @@ class DatabaseInterface():
         Updates the database entry at 'r_id' for the desired setting the data
         for heading 'key' as 'value'.
         """
-        self.cur.execute("UPDATE {0} SET {1} = {2} WHERE rowid = {3}"
-                         .format(self.db_name[:-3], key, value, r_id))
+        cmd = "UPDATE {0} SET {1} = {2} WHERE rowid = {3}".format(
+                self.db_name[:-3], key, repr(value), r_id)
+        self.cur.execute(cmd)
         self.conn.commit()
 
     def delete(self, r_id: int) -> None:
@@ -153,3 +154,4 @@ class DatabaseInterface():
         items = self.cur.fetchall()
         self.conn.commit()
         return items
+
