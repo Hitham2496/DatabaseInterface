@@ -116,7 +116,7 @@ class DatabaseInterface():
         Executes a user-input SQLite command which must be given as a string.
         """
         if not isinstance(command, str):
-            raise ValueError("Command must be a string")
+            raise TypeError("Command must be a string")
         self.cur.execute(command)
 
     def lookup(self, criteria=None) -> list:
@@ -139,7 +139,7 @@ class DatabaseInterface():
         for idx, crit in enumerate(criteria):
 
             if (not isinstance(crit, tuple)) or len(crit) != 2:
-                raise ValueError(
+                raise TypeError(
                         "Criteria provided not tuple or list of length 2")
 
             if isinstance(crit[1], str):

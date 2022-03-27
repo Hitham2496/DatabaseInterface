@@ -35,7 +35,7 @@ class TestInterface(unittest.TestCase):
 
     def test_lookup_delete(self):
         """
-        Test that elements are added to the database properly
+        Test that looking up and deleting is implemented correctly
         """
         headings = {'name': 'TEXT', 'age': 'INT'}
         interf = DatabaseInterface('people.db', headings)
@@ -46,6 +46,7 @@ class TestInterface(unittest.TestCase):
         check = [(1, 'Steve', 25), (2, 'Emma', 22)]
         interf.delete(3)
         self.assertEqual(interf.lookup(), check)
+        self.assertRaises(TypeError, interf.lookup(), 'age') 
 
         interf.add_one({'name': 'Anna', 'age': 25})
         check = [(1, 'Steve', 25), (3, 'Anna', 25)]
