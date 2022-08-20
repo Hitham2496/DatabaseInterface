@@ -3,7 +3,7 @@ import sqlite3
 
 class DatabaseInterface():
 
-    def __init__(self, db_name: str, keys_types: dict = None) -> None:
+    def __enter__(self, db_name: str, keys_types: dict = None) -> None:
         """
         Creates a DatabaseInterface object connected to a SQLite database
         named 'db_name', creates the database with one table headed
@@ -21,7 +21,7 @@ class DatabaseInterface():
         self.create_table()
         self.conn.commit()
 
-    def __del__(self) -> None:
+    def __exit__(self) -> None:
         """
         Closes connection immediately on destruction
         """
