@@ -154,4 +154,3 @@ class DatabaseInterface():
         items = self.cur.fetchall()
         self.conn.commit()
         return items
-
