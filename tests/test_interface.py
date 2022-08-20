@@ -13,7 +13,7 @@ class TestInterface(unittest.TestCase):
         interf_create = DatabaseInterface('people.db', headings)
         x = os.system("ls people.db")
         self.assertEqual(x, 0)
-        del(interf_create)
+        del (interf_create)
         interf_conn = DatabaseInterface('people.db')
         self.assertEqual(headings, interf_conn.keys_types)
         os.system("rm people.db")
@@ -46,7 +46,7 @@ class TestInterface(unittest.TestCase):
         check = [(1, 'Steve', 25), (2, 'Emma', 22)]
         interf.delete(3)
         self.assertEqual(interf.lookup(), check)
-        self.assertRaises(TypeError, interf.lookup, 'age') 
+        self.assertRaises(TypeError, interf.lookup, 'age')
         self.assertRaises(TypeError, interf.lookup,
                           [('age', 22), ['name', 'Gloria', 6]])
 
@@ -94,4 +94,3 @@ class TestInterface(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
-
